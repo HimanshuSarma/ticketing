@@ -66,8 +66,6 @@ const createPaymentController = {
 
     const razorpayRes = await razorpay.orders.create(options);
 
-    console.log(`payments-srv`, fetchedOrder, razorpayRes);
-
     // create a payment record...
     // we are not capturing payments in the frontend now
     // so we are directly considering the payment to be complete.
