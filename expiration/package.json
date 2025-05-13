@@ -1,0 +1,35 @@
+{
+  "name": "expiration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --clearCache && jest --watchAll",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start": "concurrently \"tsc --watch\" \"nodemon dist/src/index.js\"",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsc && node dist/src/index.js'",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@himanshusarmaorg/common": "^1.0.39",
+    "@types/bull": "^4.10.4",
+    "@types/dotenv": "^8.2.3",
+    "bull": "^4.16.5",
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.5.0",
+    "node-nats-streaming": "^0.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/supertest": "^6.0.3",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "ts-jest": "^29.3.1"
+  }
+}

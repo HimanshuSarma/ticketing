@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tickets-mongo
+  template:
+    metadata:
+      labels: 
+        app: tickets-mongo
+    spec:
+      containers:
+        - name: tickets-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets-mongo-srv-loadbalancer
+  namespace: default  # Change if using a different namespace
+spec:
+  type: LoadBalancer
+  selector:
+    app: tickets-mongo  # Ensure this matches your MongoDB pod labels
+  ports:
+    - name: tickets-mongo
+      protocol: TCP
+      port: 27017  # External access port
+      targetPort: 27017  # Port MongoDB is running on inside the pod

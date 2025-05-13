@@ -1,0 +1,48 @@
+apiVersion: skaffold/v2beta14
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*.yaml
+build:
+  artifacts:
+    # - image: himanshusarma123/auth
+    #   context: auth
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/.ts'
+    #         dest: .
+    # - image: himanshusarma123/tickets
+    #   context: tickets
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/.ts'
+    #         dest: .
+    # - image: himanshusarma123/orders
+    #   context: orders
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/.ts'
+    #         dest: .
+    # - image: himanshusarma123/client
+    #   context: client
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.js'
+    #         dest: .
+    # - image: himanshusarma123/payments
+    #   context: payments
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.js'
+    #         dest: .

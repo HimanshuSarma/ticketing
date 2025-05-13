@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-redis-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration-redis
+  template:
+    metadata:
+      labels: 
+        app: expiration-redis
+    spec:
+      containers:
+        - name: expiration-redis
+          image: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: expiration-redis-srv-loadbalancer
+  namespace: default  # Change if using a different namespace
+spec:
+  type: LoadBalancer
+  selector:
+    app: expiration-redis  # Ensure this matches your MongoDB pod labels
+  ports:
+    - name: expiration-redis
+      protocol: TCP
+      port: 6379  # External access port
+      targetPort: 6379  # Port MongoDB is running on inside the pod

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-mongo
+  template:
+    metadata:
+      labels: 
+        app: payments-mongo
+    spec:
+      containers:
+        - name: payments-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-mongo-srv-loadbalancer
+  namespace: default  # Change if using a different namespace
+spec:
+  type: LoadBalancer
+  selector:
+    app: payments-mongo  # Ensure this matches your MongoDB pod labels
+  ports:
+    - name: payments-mongo
+      protocol: TCP
+      port: 27017  # External access port
+      targetPort: 27017  # Port MongoDB is running on inside the pod
