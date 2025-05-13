@@ -7,4 +7,4 @@ interface IDBModels {
 
 export type {
   IDBModels
-};
+}
