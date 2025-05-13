@@ -1,8 +1,3 @@
 node_modules
 **/.env
 **/node_modules
-payments/.env
-orders/.env
-expiration/.env
-auth/.env
-common/.env
