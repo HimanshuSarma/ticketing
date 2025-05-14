@@ -12,6 +12,6 @@ app.listen(port, async () => {
   try {
     await createConnectionHandler();
   } catch (err) {
-    console.log("DB connection error: ", err);
+    console.log("DB connection error: ", err)
   }
 });
