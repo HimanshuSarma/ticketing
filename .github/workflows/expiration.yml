@@ -1,7 +1,9 @@
 name: expiration
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'expiration/**'
 
 jobs:
   build:
