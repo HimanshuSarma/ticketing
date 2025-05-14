@@ -8,7 +8,7 @@ dotenv.config({})
 const port = 4000;
 
 app.listen(port, async () => {
-  console.log(`Server listening at port: ${port}`);
+  console.log(`Server listening at port: ${port}`)
   try {
     await createConnectionHandler();
   } catch (err) {
