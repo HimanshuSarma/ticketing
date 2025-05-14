@@ -44,28 +44,6 @@ router.get(
   fetchAllTicketsController.handler
 );
 
-// router.post<
-//   any,
-//   any,
-//   ITicketCreationRequestBody
-// >(
-//   `/signin`,
-//   userSigninController.validation,
-//   userSigninController.handler
-// );
-
-// router.post(
-//   `/signout`,
-//   userSignoutController.validation,
-//   userSignoutController.handler
-// );
-
-// router.get(
-//   `/currentuser`, 
-//   currentUserController.validation,
-//   currentUserController.handler
-// );
-
 export {
   router as ticketsRouter
 };
