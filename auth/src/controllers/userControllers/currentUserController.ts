@@ -12,7 +12,7 @@ const currentUserController = {
     res: Response, 
     next: NextFunction
   ) => {
-    if (req?.session?.jwt) {
+    if (req?.headers?.authorization) {
       next();
     } else {
       throw new BadRequestError("No token found");
@@ -20,7 +20,9 @@ const currentUserController = {
   }) as RequestHandler<any, any, any>,  
   handler: (async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const userJwtPayload = jwt.verify(req?.session?.jwt, process.env.JWT_KEY as string);
+      const token = req?.headers?.authorization?.split(" ")[1];
+
+      const userJwtPayload = jwt.verify(token || "", process.env.JWT_KEY as string);
       res.status(200).json({
         currentUser: userJwtPayload
       });
