@@ -92,7 +92,7 @@ describe("user signup tests", () => {
       .expect(500);
   });
 
-  it("expects a Set-Cookie header in the response", async () => {
+  it("expects a jwt token in the response", async () => {
     const response = await request(app)
       .post(
         `/api/users/signup`
@@ -103,6 +103,6 @@ describe("user signup tests", () => {
       })
       .expect(200);
 
-    expect(response.get("Set-Cookie")).toBeDefined();
+    expect(response?.body?.token).toBeDefined();
   });
 });

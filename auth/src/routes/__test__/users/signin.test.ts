@@ -61,7 +61,7 @@ describe("user signin tests", () => {
       .expect(200);
   });
 
-  it("expects a Set-Cookie header in the response", async () => {
+  it("expects a token in the response", async () => {
 
     await request(app)
       .post(
@@ -83,6 +83,6 @@ describe("user signin tests", () => {
       })
       .expect(200);
 
-    expect(response.get("Set-Cookie")).toBeDefined();
+    expect(response.body?.token).toBeDefined();
   });
 });

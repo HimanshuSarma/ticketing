@@ -12,7 +12,7 @@ class OrderCreatedListener extends BaseListener<OrderCreatedEvent> {
   async onMessage(data: OrderCreatedEvent["data"], msg: Message): Promise<void> {
     try {
       // @ts-ignore
-      const parsedData = JSON.parse(data);  
+      const parsedData = typeof data === "string" ? JSON.parse(data) : data;  
       const fetchedTicket = await global.DBModels.TICKET.findOne({
         _id: new mongoose.Types.ObjectId(parsedData?.ticket?.id?.toString())
       });

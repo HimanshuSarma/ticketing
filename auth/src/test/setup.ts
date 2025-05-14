@@ -55,6 +55,6 @@ global.signin = async () => {
     })
     .expect(200);
 
-  return response.get("Set-Cookie")?.[0] || "";
+  return response?.body?.token;
 }
 

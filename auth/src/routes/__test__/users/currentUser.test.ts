@@ -4,15 +4,15 @@ import { app } from "../../../app";
 describe("currentUser tests", () => {
   it("expects 200 response from currentuser", async () => {
 
-    const authCookie = await global.signin();
+    const token = await global.signin();
 
-    console.log(authCookie, "authCookie")
+    console.log(token, "token")
 
     const currentUserResponse = await request(app)
       .get(
         `/api/users/currentuser`
       )
-      .set("Cookie", authCookie)
+      .set('Authorization', `Bearer ${token}`) // Add the Authorization header
       .send()
       .expect(200);
 
