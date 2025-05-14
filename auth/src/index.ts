@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import createConnectionHandler from "./db/connectionHandler";
 import { app } from "./app";
 
-dotenv.config({})
+dotenv.config({});
 
 const port = 4000;
 
